@@ -16,7 +16,15 @@ public class ClickManager : MonoBehaviour
                 Tile tile = hit.collider.GetComponent<Tile>(); // Busca el script "Tile"
                 if (tile != null)
                 {
-                    tile.OnClick(); // Llama a la función de la casilla
+                    if (GameManager.Instance.CanAfford(tile.cost))
+                    {
+                        GameManager.Instance.PurchaseTile(tile);
+                        Debug.Log("Has comprado una casilla de tipo " + tile.tileType);
+                    }
+                    else
+                    {
+                        Debug.Log("No tienes suficiente dinero para comprar esta casilla.");
+                    }
                 }
             }
         }

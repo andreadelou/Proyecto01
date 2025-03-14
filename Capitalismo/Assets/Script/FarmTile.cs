@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FarmTile : Tile
 {
-    public int requiredWorkers = 5;
-    public int currentWorkers = 0;
-    public float income = 2f; // Ingreso si hay suficientes obreros
+    public int requiredWorkers = 5; // Se necesitan 5 obreros para trabajar la tierra
+    public int currentWorkers = 0;  // Obreros actualmente asignados
+    public float income = 2f;      // Ingreso si hay suficientes obreros
 
     private void Start()
     {
-        cost = 1;
+        cost = 1; // Las tierras valen 1 moneda
         tileType = "Farm";
     }
 

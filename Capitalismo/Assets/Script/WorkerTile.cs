@@ -8,7 +8,7 @@ public class WorkerTile : Tile
 
     private void Start()
     {
-        cost = 3;
+        cost = 3; // Los cuadrados valen 3 monedas
         tileType = "Worker";
     }
 
@@ -18,11 +18,16 @@ public class WorkerTile : Tile
 
         // Buscar una tierra cercana y asignar obreros
         FarmTile farm = FindNearbyFarm();
-        if (farm != null)
+        if (farm != null && workers > 0)
         {
             farm.AddWorker();
             workers--;
+            GameManager.Instance.AssignWorker(); // Actualiza el contador de obreros en GameManager
             Debug.Log("Se asignó un obrero. Obreros restantes: " + workers);
+        }
+        else if (workers <= 0)
+        {
+            Debug.Log("No hay obreros disponibles en esta casilla.");
         }
         else
         {
@@ -32,7 +37,7 @@ public class WorkerTile : Tile
 
     private FarmTile FindNearbyFarm()
     {
-        // Busca tierras de cultivo cercanas (puedes mejorarlo con un sistema de vecinos)
+        // Busca tierras de cultivo cercanas 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);
         foreach (var hitCollider in hitColliders)
         {

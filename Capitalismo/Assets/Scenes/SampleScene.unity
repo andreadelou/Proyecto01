@@ -201,6 +201,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8980549144392899874, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
       insertIndex: -1
       addedObject: {fileID: 90748472}
+    - targetCorrespondingSourceObject: {fileID: 8980549144392899874, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 90748475}
   m_SourcePrefab: {fileID: -4216948427090074523, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
 --- !u!4 &90748470 stripped
 Transform:
@@ -227,12 +230,29 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3, y: 2.5, z: 3}
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &90748475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90748471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c242c3a7ed40d4cae7cff1497a728b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  tileType: Farm
+  requiredWorkers: 5
+  currentWorkers: 0
+  income: 2
 --- !u!1 &293544787
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +454,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -751,6 +771,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8980549144392899874, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
       insertIndex: -1
       addedObject: {fileID: 427831997}
+    - targetCorrespondingSourceObject: {fileID: 8980549144392899874, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 427832000}
   m_SourcePrefab: {fileID: -4216948427090074523, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
 --- !u!4 &427831995 stripped
 Transform:
@@ -777,12 +800,76 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3, y: 2.5, z: 3}
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &427832000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427831996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c242c3a7ed40d4cae7cff1497a728b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  tileType: Farm
+  requiredWorkers: 5
+  currentWorkers: 0
+  income: 2
+--- !u!1 &492066259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 492066261}
+  - component: {fileID: 492066260}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &492066260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492066259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d173642f5db5ab449fe2360de52fa86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 7
+  availableWorkers: 0
+  assignedWorkers: 0
+--- !u!4 &492066261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492066259}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1151.3, y: 1042.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625221361
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +882,7 @@ GameObject:
   - component: {fileID: 625221365}
   - component: {fileID: 625221364}
   - component: {fileID: 625221363}
+  - component: {fileID: 625221366}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -832,7 +920,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -888,6 +976,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625221361}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &625221366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625221361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099bfe99b12055e4a94322e77fb6a375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 3
+  tileType: Worker
+  workers: 4
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1150,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1184,6 +1287,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8980549144392899874, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
       insertIndex: -1
       addedObject: {fileID: 777136409}
+    - targetCorrespondingSourceObject: {fileID: 8980549144392899874, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 777136412}
   m_SourcePrefab: {fileID: -4216948427090074523, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
 --- !u!4 &777136407 stripped
 Transform:
@@ -1210,12 +1316,29 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.0000007, y: 2.5000005, z: 3}
   m_Center: {x: 1.7763568e-14, y: 1.2500002, z: 0}
+--- !u!114 &777136412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777136408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c242c3a7ed40d4cae7cff1497a728b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  tileType: Farm
+  requiredWorkers: 5
+  currentWorkers: 0
+  income: 2
 --- !u!1 &817765774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1669,7 @@ GameObject:
   - component: {fileID: 1674540690}
   - component: {fileID: 1674540689}
   - component: {fileID: 1674540688}
+  - component: {fileID: 1674540691}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -1583,7 +1707,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1639,6 +1763,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674540686}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1674540691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674540686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099bfe99b12055e4a94322e77fb6a375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 3
+  tileType: Worker
+  workers: 4
 --- !u!1001 &1719100701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1718,6 +1857,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8980549144392899874, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1719100704}
+    - targetCorrespondingSourceObject: {fileID: 8980549144392899874, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1719100707}
   m_SourcePrefab: {fileID: -4216948427090074523, guid: 8dac39f39d5b84e1d8f329cc59565290, type: 3}
 --- !u!4 &1719100702 stripped
 Transform:
@@ -1744,12 +1886,29 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.0000007, y: 2.5000005, z: 3}
   m_Center: {x: -1.7763568e-14, y: 1.2500002, z: 0}
+--- !u!114 &1719100707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719100703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c242c3a7ed40d4cae7cff1497a728b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  tileType: Farm
+  requiredWorkers: 5
+  currentWorkers: 0
+  income: 2
 --- !u!1 &1845271773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,6 +2099,7 @@ GameObject:
   - component: {fileID: 1861184104}
   - component: {fileID: 1861184103}
   - component: {fileID: 1861184102}
+  - component: {fileID: 1861184105}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -1977,7 +2137,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2033,6 +2193,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861184100}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1861184105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861184100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099bfe99b12055e4a94322e77fb6a375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 3
+  tileType: Worker
+  workers: 4
 --- !u!1 &1884216307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,6 +2220,7 @@ GameObject:
   - component: {fileID: 1884216311}
   - component: {fileID: 1884216310}
   - component: {fileID: 1884216309}
+  - component: {fileID: 1884216312}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2082,7 +2258,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2138,6 +2314,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884216307}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1884216312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884216307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099bfe99b12055e4a94322e77fb6a375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 3
+  tileType: Worker
+  workers: 4
 --- !u!1 &1964405084
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,7 +2462,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2339,3 +2530,4 @@ SceneRoots:
   - {fileID: 1858862073}
   - {fileID: 817765776}
   - {fileID: 1964405087}
+  - {fileID: 492066261}

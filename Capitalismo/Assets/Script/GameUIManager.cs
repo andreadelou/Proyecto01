@@ -10,15 +10,22 @@ public class GameUIManager : MonoBehaviour
     public TextMeshProUGUI workersText;        // Texto para los obreros disponibles
     public TextMeshProUGUI assignedWorkersText; // Texto para los obreros asignados a tierras
 
-    private void Start()
+    void Start()
     {
-        UpdateUI();
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("⚠️ GameManager.Instance es NULL. Asegúrate de que GameManager está en la escena.");
+        }
+        else
+        {
+            UpdateUI();
+        }
     }
 
     public void UpdateUI()
     {
-        moneyText.text = "💰 Dinero: " + GameManager.Instance.money;
-        workersText.text = "👷 Obreros: " + GameManager.Instance.availableWorkers;
-        assignedWorkersText.text = "🌾 Asignados: " + GameManager.Instance.assignedWorkers;
+        moneyText.text = "Dinero: " + GameManager.Instance.money;
+        workersText.text = "Obreros: " + GameManager.Instance.availableWorkers;
+        assignedWorkersText.text = "Asignados: " + GameManager.Instance.assignedWorkers;
     }
 }
