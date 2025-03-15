@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         {
             availableWorkers--;
             assignedWorkers++;
-            FindObjectOfType<GameUIManager>().UpdateUI();
+            FindObjectOfType<GameUIManager>().UpdateUI(); // Actualiza la UI
         }
     }
 

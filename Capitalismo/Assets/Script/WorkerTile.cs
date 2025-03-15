@@ -37,7 +37,7 @@ public class WorkerTile : Tile
 
     private FarmTile FindNearbyFarm()
     {
-        // Busca tierras de cultivo cercanas 
+        // Busca tierras de cultivo cercanas
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);
         foreach (var hitCollider in hitColliders)
         {
