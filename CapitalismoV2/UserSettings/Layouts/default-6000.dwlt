@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 544
+  controlID: 50
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 545
+  controlID: 51
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 546
+  controlID: 52
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -425,7 +425,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: e6f9fffff4f9fffff8f9ffffe0faffffe4faffffe8faffffecfaffff0cfbffff20fbffff1cab000022ab000024ab000032ab000040ab00005aab000092ab000094ab000096ab0000
+      m_ExpandedIDs: 20fbffff3cab0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1022,9 +1022,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 0.8655195, y: 0.5099763, z: -0.02606748}
+    m_Target: {x: 0.84999233, y: 0.90313095, z: 0.6554609}
     speed: 2
-    m_Value: {x: 0.8655195, y: 0.5099763, z: -0.02606748}
+    m_Value: {x: 0.84999233, y: 0.90313095, z: 0.6554609}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1070,13 +1070,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.1348167, y: 0.5551322, z: -0.091757774, w: -0.81563276}
+    m_Target: {x: -0.12189489, y: 0.62336296, z: -0.09919696, w: -0.7659929}
     speed: 2
-    m_Value: {x: -0.1348167, y: 0.5551322, z: -0.091757774, w: -0.81563276}
+    m_Value: {x: -0.12189488, y: 0.62336296, z: -0.09919696, w: -0.7659929}
   m_Size:
-    m_Target: 1.1116972
+    m_Target: 1.5367106
     speed: 2
-    m_Value: 1.1116972
+    m_Value: 1.5367106
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1282,7 +1282,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefab
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1292,16 +1292,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Prefab
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\andre\OneDrive\Documentos\GitHub\Proyecto01\CapitalismoV2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 16b10000
-    m_LastClickedID: 45334
-    m_ExpandedIDs: 000000009eb00000
+    m_SelectedIDs: 50b70000
+    m_LastClickedID: 46928
+    m_ExpandedIDs: 00000000c2b00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1330,7 +1330,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009eb00000
+    m_ExpandedIDs: 00000000c2b00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1356,8 +1356,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 9aab0000
-    m_LastClickedInstanceID: 43930
+    m_SelectedInstanceIDs: 96ab0000
+    m_LastClickedInstanceID: 43926
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300008e5a0000f26c0000805a0000b262000070690000f85f0000ba630000ce630000d6630000cc7f00002862000000000000
     m_RenameOverlay:
