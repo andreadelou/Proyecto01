@@ -1,11 +1,13 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using System.Linq;
 
 public class PlayerEconomy : MonoBehaviour
 {
     public int monedas = 7; // Monedas iniciales
     public TextMeshProUGUI monedasText; // Texto en UI para mostrar monedas
+    public TextMeshProUGUI tierrasCompradasText; //Tierras compradas
 
     private HashSet<GameObject> tierrasCompradas = new HashSet<GameObject>(); // Tierras ya compradas
 
@@ -20,6 +22,7 @@ public class PlayerEconomy : MonoBehaviour
     private void Start()
     {
         ActualizarMonedasUI();
+        ActualizarListaTierrasUI();
     }
 
     private void ActualizarMonedasUI()
@@ -27,6 +30,18 @@ public class PlayerEconomy : MonoBehaviour
         if (monedasText != null)
         {
             monedasText.text = "Monedas: " + monedas;
+        }
+    }
+
+    private void ActualizarListaTierrasUI()
+    {
+        if (tierrasCompradasText != null)
+        {
+            // Crear una lista de nombres de las tierras compradas
+            List<string> nombresTierras = tierrasCompradas.Select(t => t.name).ToList();
+
+            // Mostrar los nombres en el texto de la UI
+            tierrasCompradasText.text = "Own:\n" + string.Join("\n", nombresTierras);
         }
     }
 
@@ -72,6 +87,7 @@ public class PlayerEconomy : MonoBehaviour
                 monedas -= costo;
                 tierrasCompradas.Add(tierra);
                 ActualizarMonedasUI();
+                ActualizarListaTierrasUI();
                 StartCoroutine(GenerarIngresos(ingreso));
             }
         }
