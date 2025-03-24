@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 50
+  controlID: 16860
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 51
+  controlID: 16861
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 52
+  controlID: 16862
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -200,8 +200,8 @@ MonoBehaviour:
     y: 0
     width: 313
     height: 672
-  m_MinSize: {x: 201, y: 226}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -245,10 +245,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 15}
-      m_SelectedIDs: 
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: e8b30000
       m_LastClickedID: 0
-      m_ExpandedIDs: e6c0ffff16c8ffffe0cdffffb6d2ffff28dbffff20fbffff00bb000008bd0000
+      m_ExpandedIDs: 1a2effff1639ffff5640ffffe6c0ffff16c8ffffe0cdffffb6d2ffff28dbffff20fbffff00bb0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -952,9 +952,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.34284312, y: 0.4673072, z: -0.20299965, w: -0.7892236}
   m_Size:
-    m_Target: 2.6468167
+    m_Target: 1.2099885
     speed: 2
-    m_Value: 2.6468167
+    m_Value: 1.2099885
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1187,7 +1187,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefab
+    - Assets/Scenes
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1197,16 +1197,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefab
+  - Assets/Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\andre\OneDrive\Documentos\GitHub\Proyecto01\CapitalismoV2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3cb10000
-    m_LastClickedID: 45372
-    m_ExpandedIDs: 00000000c2b0000038b1000000ca9a3b
+    m_SelectedIDs: 3eb10000
+    m_LastClickedID: 45374
+    m_ExpandedIDs: 00000000c2b0000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1235,7 +1235,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c2b00000
+    m_ExpandedIDs: 00000000c2b0000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1261,24 +1261,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: e8b30000
+    m_LastClickedInstanceID: 46056
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300008e5a0000f26c0000805a0000b262000070690000f85f0000ba630000ce630000d6630000cc7f00002862000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Asset
-      m_OriginalName: Asset
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 45368
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 13}

@@ -2,12 +2,14 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class PlayerEconomy : MonoBehaviour
 {
     public int monedas = 7; // Monedas iniciales
     public TextMeshProUGUI monedasText; // Texto en UI para mostrar monedas
     public TextMeshProUGUI tierrasCompradasText; //Tierras compradas
+    public string Ending = "Ending";
 
     private HashSet<GameObject> tierrasCompradas = new HashSet<GameObject>(); // Tierras ya compradas
 
@@ -31,7 +33,18 @@ public class PlayerEconomy : MonoBehaviour
         {
             monedasText.text = "Monedas: " + monedas;
         }
+        // Verificar si alcanzó las monedas deseadas
+        if (monedas >= 80)
+        {
+            CargarEscenaFinal();
+        }
     }
+
+    private void CargarEscenaFinal()
+    {
+        SceneManager.LoadScene(Ending);
+    }
+
 
     private void ActualizarListaTierrasUI()
     {
