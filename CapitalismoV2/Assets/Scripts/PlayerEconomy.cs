@@ -17,6 +17,7 @@ public class PlayerEconomy : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("Espacio");
             Comprar();
         }
     }
@@ -60,9 +61,14 @@ public class PlayerEconomy : MonoBehaviour
 
     void Comprar()
     {
+        Vector3 rayOrigin = transform.position;
+        float rayDistance = 1.5f;
+        Debug.DrawRay(rayOrigin, Vector3.down * rayDistance, Color.red, 0.5f);
+
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.5f))
         {
+            Debug.Log("Hit");
             GameObject tierra = hit.transform.gameObject;
 
             // Verifica si la tierra ya fue comprada
