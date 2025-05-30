@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sand-rocks
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a9e8848378b5f34dba809fb2c2c2ddb, type: 3}
+      propertyPath: m_TagString
+      value: Arena
+      objectReference: {fileID: 0}
     - target: {fileID: 1598979235395007687, guid: 0a9e8848378b5f34dba809fb2c2c2ddb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.016

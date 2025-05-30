@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a87c088e1d4e3714ea223a02d8afd010, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.949
+      value: 0.5280316
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a87c088e1d4e3714ea223a02d8afd010, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.107
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a87c088e1d4e3714ea223a02d8afd010, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.641
+      value: 2.5669324
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a87c088e1d4e3714ea223a02d8afd010, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51,6 +51,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a87c088e1d4e3714ea223a02d8afd010, type: 3}
       propertyPath: m_Name
       value: building-archery
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a87c088e1d4e3714ea223a02d8afd010, type: 3}
+      propertyPath: m_TagString
+      value: Torres
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

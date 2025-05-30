@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2c2578ed0476c974fa04f5dc3e6a4d5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.501
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c2578ed0476c974fa04f5dc3e6a4d5e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.094
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c2578ed0476c974fa04f5dc3e6a4d5e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.78
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c2578ed0476c974fa04f5dc3e6a4d5e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,11 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2c2578ed0476c974fa04f5dc3e6a4d5e, type: 3}
       propertyPath: m_Name
-      value: sand
+      value: Arena
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2c2578ed0476c974fa04f5dc3e6a4d5e, type: 3}
       propertyPath: m_TagString
-      value: Coffe
+      value: Arena
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2c2578ed0476c974fa04f5dc3e6a4d5e, type: 3}
       propertyPath: m_StaticEditorFlags

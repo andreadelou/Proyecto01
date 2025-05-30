@@ -61,12 +61,10 @@ public class PlayerEconomy : MonoBehaviour
 
     void Comprar()
     {
-        Vector3 rayOrigin = transform.position;
-        float rayDistance = 1.5f;
-        Debug.DrawRay(rayOrigin, Vector3.down * rayDistance, Color.red, 0.5f);
+        Vector3 rayOrigin = transform.position + (0.3f * Vector3.up);
+        Debug.DrawRay(rayOrigin, Vector3.down, Color.red, 0.5f);
 
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.5f))
+        if (Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit hit, 0.5f))
         {
             Debug.Log("Hit");
             GameObject tierra = hit.transform.gameObject;
@@ -81,23 +79,29 @@ public class PlayerEconomy : MonoBehaviour
             int ingreso = 0;
 
             // Determina el costo e ingreso basado en el tag del objeto
-            if (tierra.CompareTag("Corn"))
+            if (tierra.CompareTag("Arena"))
             {
-                Debug.Log("Corn");
+                Debug.Log("Arena");
                 costo = 1;
                 ingreso = 1;
             }
-            else if (tierra.CompareTag("Coffe"))
+            else if (tierra.CompareTag("Madera"))
             {
-                Debug.Log("Coffe");
+                Debug.Log("Madera");
                 costo = 3;
-                ingreso = 4;
+                ingreso = 1;
             }
-            else if (tierra.CompareTag("Trade"))
+            else if (tierra.CompareTag("Piedra"))
             {
-                Debug.Log("Trade");
+                Debug.Log("Piedra");
+                costo = 3;
+                ingreso = 1;
+            }
+            else if (tierra.CompareTag("Oveja") )
+            {
+                Debug.Log("Oveja");
                 costo = 5;
-                ingreso = 10;
+                ingreso = 1;
             }
 
             // Si el costo es mayor que 0 y tienes suficientes monedas, compra la tierra
@@ -122,52 +126,4 @@ public class PlayerEconomy : MonoBehaviour
         }
     }
 
-
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (tierrasCompradas.Contains(other.gameObject))
-        {
-            return; // Si ya fue comprada, no hacer nada
-        }
-
-        int costo = 0;
-        int ingreso = 0;
-
-        if (other.CompareTag("Corn"))
-        {
-            costo = 1;
-            ingreso = 1;
-        }
-        else if (other.CompareTag("Coffe"))
-        {
-            costo = 3;
-            ingreso = 4;
-        }
-        else if (other.CompareTag("Trade"))
-        {
-            costo = 5;
-            ingreso = 10;
-        }
-
-        if (costo > 0 && monedas >= costo)
-        {
-            // Compra la tierra
-            monedas -= costo;
-            tierrasCompradas.Add(other.gameObject);
-            ActualizarMonedasUI();
-            StartCoroutine(GenerarIngresos(ingreso));
-        }
-    }
-
-    private System.Collections.IEnumerator GenerarIngresos(int ingreso)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(5f); // Ingresa dinero cada 5 segundos
-            monedas += ingreso;
-            ActualizarMonedasUI();
-        }
-    }
-    */
 }
