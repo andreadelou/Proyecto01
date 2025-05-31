@@ -1,31 +1,49 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine.SceneManagement;
 
 public class PlayerEconomy : MonoBehaviour
 {
-    public int monedas = 7; // Monedas iniciales
-    public TextMeshProUGUI monedasText; // Texto en UI para mostrar monedas
-    public TextMeshProUGUI tierrasCompradasText; //Tierras compradas
-    public string Ending = "Ending";
+    public int monedas = 7;
+    public TextMeshProUGUI monedasText;
+    public TextMeshProUGUI tierrasCompradasText;
+    public TextMeshProUGUI objetivoText; // NUEVO: UI para el objetivo actual
 
-    private HashSet<GameObject> tierrasCompradas = new HashSet<GameObject>(); // Tierras ya compradas
+    private HashSet<GameObject> tierrasCompradas = new HashSet<GameObject>();
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Espacio");
-            Comprar();
-        }
-    }
+    // Recursos
+    private int maderas = 0;
+    private int piedras = 0;
+    private int ovejas = 0;
+
+    // Estructuras
+    private int casas = 0;
+    private int molinos = 0;
+    private int torres = 0;
+
+    // Recompensas
+    private const int RECOMPENSA_DEFAULT = 2;
+    private const int RECOMPENSA_CASA = 5;
+    private const int RECOMPENSA_MOLINO = 7;
+    private const int RECOMPENSA_TORRE = 10;
+
+    // Objetivo progresivo
+    private int estadoObjetivo = 0; // 0: casas, 1: molino, 2: torres, 3: fin
 
     private void Start()
     {
         ActualizarMonedasUI();
         ActualizarListaTierrasUI();
+        ActualizarObjetivoUI();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Comprar();
+        }
     }
 
     private void ActualizarMonedasUI()
@@ -34,96 +52,181 @@ public class PlayerEconomy : MonoBehaviour
         {
             monedasText.text = "Monedas: " + monedas;
         }
-        // Verificar si alcanzó las monedas deseadas
-        if (monedas >= 80)
-        {
-            CargarEscenaFinal();
-        }
     }
-
-    private void CargarEscenaFinal()
-    {
-        SceneManager.LoadScene(Ending);
-    }
-
 
     private void ActualizarListaTierrasUI()
     {
         if (tierrasCompradasText != null)
         {
-            // Crear una lista de nombres de las tierras compradas
-            List<string> nombresTierras = tierrasCompradas.Select(t => t.name).ToList();
-
-            // Mostrar los nombres en el texto de la UI
-            tierrasCompradasText.text = "Own:\n" + string.Join("\n", nombresTierras);
+            tierrasCompradasText.text =
+                $"Maderas: {maderas}\n" +
+                $"Piedras: {piedras}\n" +
+                $"Ovejas:  {ovejas}\n\n" +
+                $"Casas:   {casas}\n" +
+                $"Molinos: {molinos}\n" +
+                $"Torres:  {torres}";
         }
     }
 
-    void Comprar()
+    private void ActualizarObjetivoUI()
+    {
+        if (objetivoText == null) return;
+
+        switch (estadoObjetivo)
+        {
+            case 0:
+                objetivoText.text = "Objetivo: Construye 2 casas";
+                break;
+            case 1:
+                objetivoText.text = "Objetivo: Construye 1 molino";
+                break;
+            case 2:
+                objetivoText.text = "Objetivo: Construye 3 torres";
+                break;
+            case 3:
+                objetivoText.text = "¡Objetivo completo!";
+                break;
+        }
+    }
+
+    private void VerificarProgresoObjetivo()
+    {
+        switch (estadoObjetivo)
+        {
+            case 0:
+                if (casas >= 2)
+                {
+                    estadoObjetivo = 1;
+                    ActualizarObjetivoUI();
+                }
+                break;
+            case 1:
+                if (molinos >= 1)
+                {
+                    estadoObjetivo = 2;
+                    ActualizarObjetivoUI();
+                }
+                break;
+            case 2:
+                if (torres >= 3)
+                {
+                    estadoObjetivo = 3;
+                    ActualizarObjetivoUI();
+                    CargarEscenaFinal();
+                }
+                break;
+        }
+    }
+
+    private void Comprar()
     {
         Vector3 rayOrigin = transform.position + (0.3f * Vector3.up);
         Debug.DrawRay(rayOrigin, Vector3.down, Color.red, 0.5f);
 
         if (Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit hit, 0.5f))
         {
-            Debug.Log("Hit");
             GameObject tierra = hit.transform.gameObject;
 
-            // Verifica si la tierra ya fue comprada
-            if (tierrasCompradas.Contains(tierra))
-            {
-                return; // Si ya fue comprada, no hacer nada
-            }
+            if (tierrasCompradas.Contains(tierra)) return;
 
             int costo = 0;
-            int ingreso = 0;
+            int recompensa = 0;
+            bool puedeComprar = false;
 
-            // Determina el costo e ingreso basado en el tag del objeto
-            if (tierra.CompareTag("Arena"))
+            // Recursos básicos
+            if (tierra.CompareTag("Madera"))
             {
-                Debug.Log("Arena");
-                costo = 1;
-                ingreso = 1;
-            }
-            else if (tierra.CompareTag("Madera"))
-            {
-                Debug.Log("Madera");
                 costo = 3;
-                ingreso = 1;
+                if (monedas >= costo)
+                {
+                    monedas -= costo;
+                    maderas++;
+                    recompensa = RECOMPENSA_DEFAULT;
+                    puedeComprar = true;
+                }
             }
             else if (tierra.CompareTag("Piedra"))
             {
-                Debug.Log("Piedra");
                 costo = 3;
-                ingreso = 1;
+                if (monedas >= costo)
+                {
+                    monedas -= costo;
+                    piedras++;
+                    recompensa = RECOMPENSA_DEFAULT;
+                    puedeComprar = true;
+                }
             }
-            else if (tierra.CompareTag("Oveja") )
+            else if (tierra.CompareTag("Oveja"))
             {
-                Debug.Log("Oveja");
                 costo = 5;
-                ingreso = 1;
+                if (monedas >= costo)
+                {
+                    monedas -= costo;
+                    ovejas++;
+                    recompensa = RECOMPENSA_DEFAULT;
+                    puedeComprar = true;
+                }
             }
 
-            // Si el costo es mayor que 0 y tienes suficientes monedas, compra la tierra
-            if (costo > 0 && monedas >= costo)
+            // Casa (requiere recursos)
+            else if (tierra.CompareTag("Casa"))
             {
-                monedas -= costo;
+                if (maderas >= 2 && piedras >= 2)
+                {
+                    maderas -= 2;
+                    piedras -= 2;
+                    casas++;
+                    recompensa = RECOMPENSA_CASA;
+                    puedeComprar = true;
+                }
+            }
+            // Molino
+            else if (tierra.CompareTag("Molino"))
+            {
+                if (ovejas >= 2)
+                {
+                    ovejas -= 2;
+                    molinos++;
+                    recompensa = RECOMPENSA_MOLINO;
+                    puedeComprar = true;
+                }
+            }
+            // Torre
+            else if (tierra.CompareTag("Torre"))
+            {
+                if (casas >= 2 && molinos >= 1)
+                {
+                    casas -= 2;
+                    molinos -= 1;
+                    torres++;
+                    recompensa = RECOMPENSA_TORRE;
+                    puedeComprar = true;
+                }
+            }
+
+            if (puedeComprar)
+            {
                 tierrasCompradas.Add(tierra);
+                monedas += recompensa;
                 ActualizarMonedasUI();
                 ActualizarListaTierrasUI();
-                StartCoroutine(GenerarIngresos(ingreso));
+                VerificarProgresoObjetivo();
             }
         }
     }
 
-    private System.Collections.IEnumerator GenerarIngresos(int ingreso)
+    private void CargarEscenaFinal()
     {
-        while (true)
+        int escenaActual = SceneManager.GetActiveScene().buildIndex;
+        int siguienteEscena = escenaActual + 1;
+
+        if (siguienteEscena < SceneManager.sceneCountInBuildSettings)
         {
-            yield return new WaitForSeconds(5f); // Ingresa dinero cada 5 segundos
-            monedas += ingreso;
-            ActualizarMonedasUI();
+            SceneManager.LoadScene(siguienteEscena);
+        }
+        else
+        {
+            Debug.Log("No hay una escena siguiente definida.");
         }
     }
-
 }

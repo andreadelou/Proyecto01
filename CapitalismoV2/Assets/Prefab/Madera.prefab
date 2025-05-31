@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9348970292f398e47aa9be84d7f12646, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.272
+      value: -1.6888039
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9348970292f398e47aa9be84d7f12646, type: 3}
       propertyPath: m_LocalPosition.y
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6258181035773486596, guid: 9348970292f398e47aa9be84d7f12646, type: 3}
       propertyPath: m_TagString
-      value: Corn
+      value: Madera
       objectReference: {fileID: 0}
     - target: {fileID: -6258181035773486596, guid: 9348970292f398e47aa9be84d7f12646, type: 3}
       propertyPath: m_StaticEditorFlags
