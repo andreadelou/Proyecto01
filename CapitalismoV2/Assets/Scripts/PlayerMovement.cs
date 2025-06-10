@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     private float pitch = 0f;
     public Transform model;
     private Animator animator;
+    private float verticalVelocity = 0f;
+    public float jumpForce = 0.2f;
+    public float gravity = -10f;
+
 
     void Start()
     {
@@ -27,19 +31,37 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
-        Vector3 movementVector = cameraFollow.right * moveX 
-            + cameraFollow.forward * moveZ;
+        Vector3 movementVector = cameraFollow.right * moveX + cameraFollow.forward * moveZ;
         movementVector.y = 0;
         movementVector.Normalize();
 
 
+        // Gravedad y salto
+        if (characterController.isGrounded)
+        {
+            verticalVelocity = 0f;
+
+            if (Input.GetKeyDown(KeyCode.LeftShift)) // Salto con Shift izquierdo
+            {
+                verticalVelocity = jumpForce;
+            }
+        }
+        else
+        {
+            verticalVelocity += gravity * Time.deltaTime;
+        }
+
+        Vector3 finalMove = movementVector * movementSpeed;
+        finalMove.y = verticalVelocity;
+
+        characterController.Move(finalMove * Time.deltaTime);
+
         if (movementVector.magnitude > 0)
         {
-            characterController.SimpleMove(movementVector * movementSpeed);
             Quaternion rotation = Quaternion.LookRotation(movementVector);
             model.rotation = rotation;
-
         }
+
         animator.SetFloat("Speed", movementVector.magnitude);
 
         void CameraMovement()

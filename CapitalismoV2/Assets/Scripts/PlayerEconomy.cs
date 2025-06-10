@@ -31,18 +31,76 @@ public class PlayerEconomy : MonoBehaviour
     // Objetivo progresivo
     private int estadoObjetivo = 0; // 0: casas, 1: molino, 2: torres, 3: fin
 
+    //Colores baldosas
+    private Dictionary<GameObject, Color> tileOriginalColors = new Dictionary<GameObject, Color>();
+    private Color lockedColor = Color.gray;
+
+    //Nombre baldosa
+    public TextMeshProUGUI tileInfoText;
+
+    private void MostrarInfoBaldosa()
+    {
+        Vector3 rayOrigin = transform.position + (Vector3.up * 0.3f);
+        if (Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit hit, 1f))
+        {
+            GameObject tile = hit.collider.gameObject;
+            string tipo = tile.tag;
+
+            // Opcional: renombrar tag a nombre amigable
+            string nombre = tipo switch
+            {
+                "Madera" => "Madera ",
+                "Piedra" => "Piedra ",
+                "Oveja" => "Oveja ",
+                "Casa" => "Casa (requiere 2 madera + 2 piedra)",
+                "Molino" => "Molino (requiere 2 ovejas)",
+                "Torres" => "Torre (2 casas + 1 molino)",
+                "Arena" => "Arena (solo decorativa)",
+                _ => "Desconocido"
+            };
+
+            tileInfoText.text = $"Tipo: {nombre}";
+        }
+        else
+        {
+            tileInfoText.text = "";
+        }
+    }
+
     private void Start()
     {
         ActualizarMonedasUI();
         ActualizarListaTierrasUI();
         ActualizarObjetivoUI();
+        ColorearTodasLasTierras();
     }
 
     private void Update()
     {
+        MostrarInfoBaldosa();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Comprar();
+        }
+    }
+
+    private void ColorearTodasLasTierras()
+    {
+        // Puedes usar otros tags si tus tiles los tienen
+        string[] tags = { "Arena", "Madera", "Piedra", "Oveja", "Casa", "Molino", "Torres" };
+
+        foreach (string tag in tags)
+        {
+            GameObject[] tiles = GameObject.FindGameObjectsWithTag(tag);
+            foreach (GameObject tile in tiles)
+            {
+                Renderer renderer = tile.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    tileOriginalColors[tile] = renderer.material.color;
+                    renderer.material.color = lockedColor;
+                }
+            }
         }
     }
 
@@ -75,13 +133,13 @@ public class PlayerEconomy : MonoBehaviour
         switch (estadoObjetivo)
         {
             case 0:
-                objetivoText.text = "Objetivo: Construye 2 casas";
+                objetivoText.text = "Objetivo: Construye 2 casas \n 2 maderas, 2 piedras";
                 break;
             case 1:
-                objetivoText.text = "Objetivo: Construye 1 molino";
+                objetivoText.text = "Objetivo: Construye 1 molino \n 2 ovejas ";
                 break;
             case 2:
-                objetivoText.text = "Objetivo: Construye 3 torres";
+                objetivoText.text = "Objetivo: Construye 3 torres \n 2 casas, 1 molino";
                 break;
             case 3:
                 objetivoText.text = "¡Objetivo completo!";
@@ -113,6 +171,7 @@ public class PlayerEconomy : MonoBehaviour
                     estadoObjetivo = 3;
                     ActualizarObjetivoUI();
                     CargarEscenaFinal();
+                    CargarEscenaEnding();
                 }
                 break;
         }
@@ -134,6 +193,15 @@ public class PlayerEconomy : MonoBehaviour
             bool puedeComprar = false;
 
             // Recursos básicos
+            if (tierra.CompareTag("Arena"))
+            {
+                costo = 3;
+                if (monedas >= costo)
+                {
+                    monedas -= costo;
+                    puedeComprar = true;
+                }
+            }
             if (tierra.CompareTag("Madera"))
             {
                 costo = 3;
@@ -192,7 +260,7 @@ public class PlayerEconomy : MonoBehaviour
                 }
             }
             // Torre
-            else if (tierra.CompareTag("Torre"))
+            else if (tierra.CompareTag("Torres"))
             {
                 if (casas >= 2 && molinos >= 1)
                 {
@@ -207,12 +275,30 @@ public class PlayerEconomy : MonoBehaviour
             if (puedeComprar)
             {
                 tierrasCompradas.Add(tierra);
+                //CAmbiar color tilde
+                if (tileOriginalColors.TryGetValue(tierra, out Color originalColor))
+                {
+                    Renderer renderer = tierra.GetComponent<Renderer>();
+                    if (renderer != null)
+                    {
+                        renderer.material.color = originalColor;
+                    }
+                }
                 monedas += recompensa;
                 ActualizarMonedasUI();
                 ActualizarListaTierrasUI();
                 VerificarProgresoObjetivo();
+                if (monedas < 3)
+                {
+                    CargarEscenaEnding();
+                }
             }
         }
+    }
+
+    private void CargarEscenaEnding()
+    {
+        SceneManager.LoadScene("Ending"); 
     }
 
     private void CargarEscenaFinal()

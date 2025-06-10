@@ -1027,19 +1027,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'El objetivo del juego es hacer la mayor cantidad de dinero distribuyendolo
-    bien.
-
-    Empiezas con 7 monedas, las cuales las puedes distribuir
-
-
-    1 moneda,
-    tierras para sembrar maiz
-
-    3 monedas, tierras sembrar cafe
-
-    5 monedas, 
-    ciudad de tradeo
+  m_text: 'El objetivo del juego es comprar las 3 torres, para eso tendras que hacer
+    compras progresivas, primero la madera, piedra y ovejas; luego las casas, molinos
+    y por ultimo las torres
 
 '
   m_isRightToLeft: 0
@@ -1180,7 +1170,9 @@ MonoBehaviour:
   m_text: 'Te mueves con AWSD y el foco de vista con el mouse
 
     Seguidamente para
-    comprar una tierra tienes que precionar espacio'
+    comprar una tierra tienes que precionar espacio
+
+    Para saltar es shift izquierdo'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1293,7 +1285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 389, y: -77.5}
+  m_AnchoredPosition: {x: 400.8, y: -107.19}
   m_SizeDelta: {x: 636.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1633760759
@@ -1316,12 +1308,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Las tierras de maiz te dan un ingreso de 1 moneda
+  m_text: '3 monedas cuesta: madera, piedra, arena
 
-    Las tierras de
-    cafe te dan 4 monedas
+    5 monedas: ovejas
 
-    y obtener una ciudad de tradeo te otorga 10 monedas
 
 '
   m_isRightToLeft: 0
